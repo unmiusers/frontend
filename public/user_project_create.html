@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create/Edit Project</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="issue.html">Issue</a></li>
+            <li><a href="project_list.html">Project</a></li>
+            <li><a href="user.html">User</a></li>
+            <li><a href="report_list.html">Report</a></li>
+            <li><a href="notification_list.html">Notification</a></li>
+            <li><a href="wiki_list.html">Wiki</a></li>
+        </ul>
+    </nav>
+    <h1>Create/Edit Project</h1>
+</header>
+<main>
+    <section class="create-project">
+        <form action="save_project.html" method="POST">
+            <label for="project-name">Project Name:</label>
+            <input type="text" id="project-name" name="project-name" required>
+
+            <label for="project-description">Project Description:</label>
+            <textarea id="project-description" name="project-description" rows="5" required></textarea>
+
+            <label for="collaborators">Collaborators:</label>
+            <div class="collaborator-list">
+                <div class="collaborator">
+                    <input type="text" name="collaborator-name[]" placeholder="Collaborator Name" required>
+                    <select name="collaborator-role[]">
+                        <option value="admin">Admin</option>
+                        <option value="editor">Editor</option>
+                        <option value="viewer">Viewer</option>
+                    </select>
+                </div>
+                <!-- Additional collaborators can be added here -->
+            </div>
+            <button type="button" id="add-collaborator">Add Collaborator</button>
+
+            <button type="submit">Save Project</button>
+        </form>
+    </section>
+</main>
+<script>
+    document.getElementById('add-collaborator').addEventListener('click', () => {
+        const collaboratorList = document.querySelector('.collaborator-list');
+        const newCollaborator = document.createElement('div');
+        newCollaborator.className = 'collaborator';
+        newCollaborator.innerHTML = `
+                <input type="text" name="collaborator-name[]" placeholder="Collaborator Name" required>
+                <select name="collaborator-role[]">
+                    <option value="admin">Admin</option>
+                    <option value="editor">Editor</option>
+                    <option value="viewer">Viewer</option>
+                </select>
+            `;
+        collaboratorList.appendChild(newCollaborator);
+    });
+</script>
+<script src="/js/main.js"></script>
+<script src="/js/webpack.config.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project History</title>
+    <link rel="stylesheet" href="/css/project.css">
+</head>
+<body>
+<div class="container">
+    <nav class="navbar">
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/issue.html">Issue</a></li>
+            <li><a href="/project_list.html">Project</a></li>
+            <li><a href="/user.html">User</a></li>
+            <li><a href="/report_list.html">Report</a></li>
+            <li><a href="/notification_list.html">Notification</a></li>
+            <li><a href="/wiki.html">Wiki</a></li>
+        </ul>
+    </nav>
+    <h1>Project History</h1>
+    <div class="history-section">
+        <h2>Participated Projects</h2>
+        <div class="history-list">
+            <!-- This section will be dynamically updated -->
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        updateHistoryList();
+    });
+
+    function updateHistoryList() {
+        const historyListElement = document.querySelector('.history-list');
+        const projects = [
+            { title: 'Project 1', link: 'project_detail.html', date: '2023-01-01' },
+            { title: 'Project 2', link: 'project_detail.html', date: '2023-02-01' },
+        ];
+
+        projects.forEach(project => {
+            const projectElement = document.createElement('div');
+            projectElement.className = 'history-item';
+            projectElement.innerHTML = `
+                    <h3><a href="${project.link}">${project.title}</a></h3>
+                    <p>Date: ${project.date}</p>
+                `;
+            historyListElement.appendChild(projectElement);
+        });
+    }
+</script>
+</body>
+</html>

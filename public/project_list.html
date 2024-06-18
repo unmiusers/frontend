@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project List</title>
+    <link rel="stylesheet" href="../public/css/project.css">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="issue.html">Issue</a></li>
+            <li><a href="project_list.html">Project</a></li>
+            <li><a href="user.html">User</a></li>
+            <li><a href="report_list.html">Report</a></li>
+            <li><a href="notification_list.html">Notification</a></li>
+            <li><a href="wiki.html">Wiki</a></li>
+        </ul>
+    </nav>
+    <h1>Project List</h1>
+</header>
+<main>
+    <section class="project-list">
+        <h2>Projects</h2>
+        <div class="project-item">
+            <h3>Project 1</h3>
+            <button class="toggle-details">Details</button>
+            <div class="project-details">
+                <p>Project 1 details...</p>
+            </div>
+        </div>
+        <div class="project-item">
+            <h3>Project 2</h3>
+            <button class="toggle-details">Details</button>
+            <div class="project-details">
+                <p>Project 2 details...</p>
+            </div>
+        </div>
+        <!-- Additional projects can be added here -->
+    </section>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleButtons = document.querySelectorAll('.toggle-details');
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const details = button.nextElementSibling;
+                if (details.style.display === 'block') {
+                    details.style.display = 'none';
+                } else {
+                    details.style.display = 'block';
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

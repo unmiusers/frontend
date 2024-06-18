@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Projects</title>
+    <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/issue.html">Issue</a></li>
+            <li><a href="/project_list.html">Project</a></li>
+            <li><a href="/user.html">User</a></li>
+            <li><a href="/report_list.html">Report</a></li>
+            <li><a href="/notification_list.html">Notification</a></li>
+            <li><a href="/wiki_list.html">Wiki</a></li>
+        </ul>
+    </nav>
+    <h1>User Projects</h1>
+</header>
+<main>
+    <section class="user-projects">
+        <h2>My Projects</h2>
+        <div class="project-item">
+            <h3>Project 1</h3>
+            <button class="manage-permissions">Manage Permissions</button>
+            <div class="permissions">
+                <h4>Collaborators</h4>
+                <ul>
+                    <li>John Doe - Admin</li>
+                    <li>Jane Smith - Editor</li>
+                    <!-- More collaborators here -->
+                </ul>
+                <button class="add-collaborator">Add Collaborator</button>
+            </div>
+        </div>
+        <div class="project-item">
+            <h3>Project 2</h3>
+            <button class="manage-permissions">Manage Permissions</button>
+            <div class="permissions">
+                <h4>Collaborators</h4>
+                <ul>
+                    <li>Alice Brown - Viewer</li>
+                    <li>Bob Johnson - Editor</li>
+                    <!-- More collaborators here -->
+                </ul>
+                <button class="add-collaborator">Add Collaborator</button>
+            </div>
+        </div>
+        <!-- Additional projects can be added here -->
+    </section>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('/api/users')
+            .then(response => response.json())
+            .then(data => {
+                const projectList = document.getElementById('project-list');
+                data.forEach(user => {
+                    const projectItem = document.createElement('div');
+                    projectItem.className = 'project-item';
+                    projectItem.innerHTML = `<h3>${user.username}</h3>
+                                                 <button class="manage-permissions">Manage Permissions</button>`;
+                    projectList.appendChild(projectItem);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
+</body>
+</html>

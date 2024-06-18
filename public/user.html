@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" href="../public/css/user.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar">
+        <ul>
+            <li><a href="/issue.html">Issue</a></li>
+            <li><a href="/project_list.html">Project</a></li>
+            <li><a href="/user.html">User</a></li>
+            <li><a href="/report_list.html">Report</a></li>
+            <li><a href="/notification_list.html">Notification</a></li>
+        </ul>
+    </nav>
+    <h1>User Management</h1>
+    <div class="user-management">
+        <form id="user-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="role">Role:</label>
+            <select id="role" name="role">
+                <option value="admin">Admin</option>
+                <option value="editor">Editor</option>
+                <option value="viewer">Viewer</option>
+            </select>
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+    <div class="chart-container">
+        <h2>User Issues Chart</h2>
+        <canvas id="userIssuesChart"></canvas>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        drawUserIssuesChart();
+    });
+
+    function drawUserIssuesChart() {
+        const ctx = document.getElementById('userIssuesChart').getContext('2d');
+        const data = {
+            labels: ['Issue 1', 'Issue 2', 'Issue 3'],
+            datasets: [{
+                label: 'Number of Issues',
+                data: [12, 19, 3],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+            }]
+        };
+        new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
